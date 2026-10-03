@@ -293,6 +293,7 @@ export function ComposerStatusStack({ onSubmit, queue, sessionId }: ComposerStat
           defaultCollapsed={group.type !== 'todo'}
           icon={<Codicon className="text-muted-foreground/70" name={GROUP_ICON[group.type]} size="0.8rem" />}
           label={groupLabel(group, t.statusStack)}
+          persistKey={group.type}
         >
           {group.items.map(item => (
             <StatusItemRow
@@ -319,6 +320,7 @@ export function ComposerStatusStack({ onSubmit, queue, sessionId }: ComposerStat
           defaultCollapsed
           icon={<Codicon className="text-muted-foreground/70" name="checklist" size="0.8rem" />}
           label={t.statusStack.previousTodos(done, retainedTodos.length)}
+          persistKey="retained-todo"
         >
           {todoTree(retainedTodos).map(([todo, depth]) => (
             <StatusItemRow
